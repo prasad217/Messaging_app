@@ -1,0 +1,260 @@
+h2 {
+    color: #ffffff
+}
+
+.chat-container {
+    display: flex;
+    height: 90vh; /* 90% of viewport height */
+    width: 100%; /* Full width */
+    background-color: #2f3542; /* Dark background color */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Dark shadow effect */
+    overflow: hidden; /* Hide overflow to prevent scrollbar */
+    color: #ffffff; /* White text for contrast */
+    position: relative; /* Relative positioning for absolute child */
+    z-index: 1; /* Ensure it's above other content */
+}
+
+.input-container {
+    display: flex;
+    border-top: 1px solid #57606f; /* Darker border */
+    padding: 10px;
+    justify-content: space-between; /* Align input and button horizontally */
+    align-items: center; /* Center input and button vertically */
+    position: absolute; /* Absolute positioning for fixed placement */
+    bottom: 0; /* Stick to the bottom */
+    left: 250px; /* Adjust as needed for sidebar */
+    width: calc(100% - 250px); /* Full width minus sidebar width */
+    max-width: 100%; /* Maximum width */
+    background-color: #57606f; /* Dark input background */
+    z-index: 10; /* Ensure it's above other content */
+}
+
+.drawer-toggle {
+    display: none; /* Hide the drawer toggle by default */
+}
+
+.chat-list-container {
+    display: block; /* Show chat list container by default */
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    height: 100%; /* Full height */
+    width: 250px; /* Fixed width */
+    background-color: #2f3542; /* Dark background color */
+    box-shadow: 8px 0 20px rgba(0, 0, 0, 0.3); /* Dark shadow effect */
+    transform: translateX(0); /* Initially visible on large screens */
+    transition: transform 0.3s ease; /* Smooth transition for animation */
+    z-index: 15; /* Ensure it's above other content */
+}
+
+.messages-container {
+    flex: 1; /* Take remaining space */
+    max-height: 77vh; /* Maximum height */
+    padding: 10px; /* Padding for messages */
+    margin-left: 250px; /* Adjust for chat list width */
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Relative positioning for absolute child */
+    overflow-y: auto; /* Vertical scrollbar */
+}
+
+.message-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.message {
+    max-width: 70%;
+    padding: 18px;
+    border-radius: 15px;
+    background-color: #3498db; /* Blue background for messages */
+    color: #ffffff; /* White text */
+    box-shadow: 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for messages */
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.message-container.own .message {
+    background-color: #9b59b6; /* Purple background for own messages */
+}
+
+.message-container.other .message {
+    background-color: #3498db; /* Blue background for other's messages */
+}
+
+.message-container.own:hover .message,
+.message-container.other:hover .message {
+  background-color: #2ecc71; /* Green background on hover */
+}
+
+.message-container.other {
+    justify-content: flex-start; /* Align other's messages to the left */
+}
+
+.message-container.own {
+    justify-content: flex-end; /* Align own messages to the right */
+}
+
+.message-content {
+    padding: 10px;
+    border-radius: 18px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.message.other::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 0;
+    border-color: #3498db transparent transparent transparent;
+    left: -10px;
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.message.own::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 0;
+    border-color: transparent #9b59b6 transparent transparent;
+    right: -10px;
+    top: 0;
+    transform: rotate(0deg);
+}
+
+.message.own::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 0;
+  border-color: transparent #9b59b6 transparent transparent;
+  right: -10px;
+  top: 0;
+  transform: rotate(0deg);
+}
+
+.message p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.type-message {
+    color: #ffffff; /* White text */
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Rounded input field */
+    margin-right: 18px;
+    font-size: 16px;
+    outline: none; /* Remove outline on focus */
+    font-family: 'Montserrat', sans-serif;
+    background-color: #57686f; /* Dark input background */
+}
+
+.type-message::placeholder {
+    color: #DBDBDB; /* Light gray placeholder text */
+}
+
+button {
+    padding: 12px 20px;
+    margin-right: 20px;
+    background-color: #3498db; /* Blue background color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 20px; /* Rounded button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #3b5a87; /* Darker shade of blue on hover */
+}
+
+.upload-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border-radius: 50%; /* Circular shape */
+    background-color: #3498db; /* Blue background color */
+    color: #fff; /* White text color */
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.upload-button:hover {
+    background-color: #3b5a87; /* Darker shade of blue on hover */
+}
+
+.upload-button span {
+    font-size: 14px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .chat-container {
+        flex-direction: column; /* Stack elements vertically on mobile */
+    }
+    
+    .messages-container {
+        margin-left: 0; /* Adjust for chat list width */
+    }
+    
+    .input-container {
+        max-width: 100%; /* Full width */
+        border-top: 1px solid #57606f; /* Darker border */
+        padding: 10px;
+        justify-content: space-between; /* Align input and button horizontally */
+        align-items: center; /* Center input and button vertically */
+        bottom: 0; /* Stick to the bottom */
+        left: 0;
+        width: 100%; /* Full width */
+        background-color: #57606f; /* Dark input background */
+        z-index: 1; /* Ensure it's above other content */
+    }
+
+    .drawer-toggle {
+        display: block; /* Show the drawer toggle button on mobile */
+        position: absolute; /* Position at top left */
+        top: 20px; /* Adjust as needed */
+        left: 20px; /* Adjust as needed */
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        z-index: 20; /* Ensure it's above other content */
+        transition: transform 0.3s ease; /* Smooth transition for animation */
+    }
+
+    .drawer-toggle.open {
+        transform: translateX(250px); /* Slide drawer open to the right */
+    }
+
+    .chat-list-container {
+        position: absolute; /* Absolute positioning */
+        top: 0; /* Align to top */
+        left: 0; /* Align to left */
+        height: 100%; /* Full height */
+        width: 250px; /* Fixed width */
+        background-color: #2f3542; /* Dark background color */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Dark shadow effect */
+        transform: translateX(-250px); /* Initially hidden off screen */
+        transition: transform 0.3s ease; /* Smooth transition for animation */
+        z-index: 15; /* Ensure it's above other content */
+    }
+
+    .chat-list-container.open {
+        transform: translateX(0);
+    }
+}
